@@ -26,22 +26,84 @@
     </div>
 </dialog>
 
-<div class="currency">Money: <span id="Money" class="NumValues">0</span></div>
+<div class="currency">Money: $<span id="Money" class="NumValues">0</span></div>
 <div class="currency">Vanilla Extract: <span id="Extract" class="NumValues">0</span></div>
 <div class="currency">Vanilla Beans: <span id="Beans" class="NumValues">0</span></div>
 
-<button id="Plant1" class="buyStuff">Plant 1 Bean</button> <button hidden id="Plant10" class="buyStuff">Plant 10 Beans</button> <button hidden id="Plant100" class="buyStuff">Plant 100 Beans!</button>
+<span id="PlantButtons">
+    <button id="Plant1" class="buyStuff">Plant 1 Bean</button>
+    <button hidden id="Plant10" class="buyStuff">Plant 10 Beans</button>
+    <button hidden id="Plant100" class="buyStuff">Plant 100 Beans!</button>
+</span>
 <br>
 <span hidden id="ConvertingT">Converting...<br></span>
-<button id="Convert1" class="buyStuff">Convert 1 Bean</button> <button hidden id="Convert10" class="buyStuff">Convert 10 Beans</button> <button hidden id="Convert100" class="buyStuff">Convert 100 Beans!</button>
+<span id="ConvertButtons">
+    <button id="Convert1" class="buyStuff">Convert 1 Bean</button>
+    <button hidden id="Convert10" class="buyStuff">Convert 10 Beans</button>
+    <button hidden id="Convert100" class="buyStuff">Convert 100 Beans!</button>
+</span>
 <br>
-<button hidden id="Sell1" class="buyStuff">Sell 1 extract</button> <button hidden id="Sell10" class="buyStuff">Sell 10 extract</button> <button hidden id="Sell100" class="buyStuff">Sell 100 extract!</button>
-<div hidden id="Shop"><b>The shop</b><div id="Upgrades"></div></div>
-<div hidden id="farm"><b>The Farm</b>
+<span id="SellButtons">
+    <button hidden id="Sell1" class="buyStuff">Sell 1 extract</button>
+    <button hidden id="Sell10" class="buyStuff">Sell 10 extract</button>
+    <button hidden id="Sell100" class="buyStuff">Sell 100 extract!</button>
+</span>
+<div hidden id="Shop"><b class="boxTitle">The shop | IMPLEMENTATION IN PROGRESS</b>
     <br>
-    <span id="PlantAmount" class="NumValues">0</span> vanilla plants each producing <span id="PlantOutput" class="NumValues">0</span> beans per second for a total of <span id="BeanRate" class="NumValues">0</span> bps
+    <div id="Upgrades">
+        <details>
+            <summary>
+                <button id="increaseSalePrice">
+                    Improve Extraction Quality
+                </button>
+                Cost: $<span id="SaPrCost" class="NumValues"></span>
+            </summary>
+            <p>Makes your extract higher quality so people will pay more for it.</p>
+        </details>
+        <details>
+            <summary>
+                <button id="increaseConvert">Improve Extraction Amount</button>
+                Cost: $<span id="ConCost" class="NumValues"></span><br>
+            </summary>
+            <p>Get more extract for each bean</p>
+        </details>
+        <details>
+            <summary>
+                <button id="increaseConvertRate">
+                    Improve Extraction Rate
+                </button>
+                Cost: $<span id="CoRaCost" class="NumValues"></span><br>
+            </summary>
+            <p>Get your extract faster!</p>
+        </details>
+        <details>
+            <summary>
+                <button id="decreaseDecay">
+                    Improve Farm
+                </button>
+                Cost: $<span id="DelCost" class="NumValues"></span><br>
+            </summary>
+            <p>Your plants will decay slower if you improve your farm a bit.</p>
+        </details>
+        <details>
+            <summary>
+                <button id="increaseBeanRate">
+                    Improve Plants
+                </button>
+                Cost: $<span id="BeRaCost" class="NumValues"></span>
+            </summary>
+            <p>A little tweak to the vanilla genome to improve bean output.</p>
+        </details>
+    </div>
+</div>
+<div hidden id="farm"><b class="boxTitle">The Farm</b>
     <br>
-    Vanilla Plants currently rot at a rate of <span id="RotRate" class="NumValues">0</span>% per tick (every half seconds)
+    <span id="PlantAmount" class="NumValues">0</span> Vanilla Plants each producing
+    <span id="PlantOutput" class="NumValues">0</span>
+    beans per second for a total of <span id="BeanRate" class="NumValues">0</span> bps
+    <br>
+    Vanilla Plants currently rot at a rate of <span id="RotRate" class="NumValues">0</span>% per tick (every half
+    seconds)
 </div>
 
 </body>
