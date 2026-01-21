@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="the stylesheet.css">
 </head>
 <body>
+<noscript>
+    <h1>You need javascript enabled to play this game!</h1>
+    <br>
+    Go enable it! Or don't play! Your Choice!
+</noscript>
+
+<div id="title">
+    <h1 >Vanilla Extractor</h1>
+    <h3 >A game about extracting vanilla</h3>
+</div>
+
+<dialog id="dialog">
+    <div id="close">X</div>
+    <div id="Message">
+        Someone has given you a vanilla bean!
+        <br>
+        You should probably plant it...
+    </div>
+</dialog>
+
+<div class="currency">Money: <span id="Money" class="NumValues">0</span></div>
+<div class="currency">Vanilla Extract: <span id="Extract" class="NumValues">0</span></div>
+<div class="currency">Vanilla Beans: <span id="Beans" class="NumValues">0</span></div>
+
+<button id="Plant1" class="buyStuff">Plant 1 Bean</button> <button hidden id="Plant10" class="buyStuff">Plant 10 Beans</button> <button hidden id="Plant100" class="buyStuff">Plant 100 Beans!</button>
+<br>
+<span hidden id="ConvertingT">Converting...<br></span>
+<button id="Convert1" class="buyStuff">Convert 1 Bean</button> <button hidden id="Convert10" class="buyStuff">Convert 10 Beans</button> <button hidden id="Convert100" class="buyStuff">Convert 100 Beans!</button>
+<br>
+<span hidden id="SellingT">Selling is not fully implemented :(<br></span>
+<button hidden id="Sell1" class="buyStuff">Sell 1 extract</button> <button hidden id="Sell10" class="buyStuff">Sell 10 extract</button> <button hidden id="Sell100" class="buyStuff">Sell 100 extract!</button>
+
+<div hidden id="farm"><span id="PlantAmount" class="NumValues">0</span> vanilla plants producing <span id="PlantOutput" class="NumValues">0</span> beans per second</div>
 
 </body>
+<script src="index.js"></script>
 </html>
