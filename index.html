@@ -13,8 +13,8 @@
 </noscript>
 
 <div id="title">
-    <h1 >Vanilla Extractor</h1>
-    <h3 >A game about extracting vanilla</h3>
+    <h1>Vanilla Extractor</h1>
+    <h3>A game about extracting vanilla (v0.1.1)</h3>
 </div>
 
 <dialog id="dialog">
@@ -35,10 +35,14 @@
 <span hidden id="ConvertingT">Converting...<br></span>
 <button id="Convert1" class="buyStuff">Convert 1 Bean</button> <button hidden id="Convert10" class="buyStuff">Convert 10 Beans</button> <button hidden id="Convert100" class="buyStuff">Convert 100 Beans!</button>
 <br>
-<span hidden id="SellingT">Selling is not fully implemented :(<br></span>
 <button hidden id="Sell1" class="buyStuff">Sell 1 extract</button> <button hidden id="Sell10" class="buyStuff">Sell 10 extract</button> <button hidden id="Sell100" class="buyStuff">Sell 100 extract!</button>
-
-<div hidden id="farm"><span id="PlantAmount" class="NumValues">0</span> vanilla plants producing <span id="PlantOutput" class="NumValues">0</span> beans per second</div>
+<div hidden id="Shop"><b>The shop</b><div id="Upgrades"></div></div>
+<div hidden id="farm"><b>The Farm</b>
+    <br>
+    <span id="PlantAmount" class="NumValues">0</span> vanilla plants each producing <span id="PlantOutput" class="NumValues">0</span> beans per second for a total of <span id="BeanRate" class="NumValues">0</span> bps
+    <br>
+    Vanilla Plants currently rot at a rate of <span id="RotRate" class="NumValues">0</span>% per tick (every half seconds)
+</div>
 
 </body>
 <script src="index.js"></script>

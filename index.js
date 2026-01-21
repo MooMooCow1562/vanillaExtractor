@@ -6,16 +6,15 @@ let money = 0
 let vanilla = 0
 let vanillaBeans = 1
 let planted = 0
-let productionRate = .01
-let productionDelayAmount = 10
-let productionContainer
+let productionRate = .025
+let rotRate = 0.9925;
 let conversionRate = 1.0/4
 let conversionDelayAmount = 10
 let conversionDelayContainer = null
-let numNames = ["#Money", "#Extract", "#Beans", "#PlantAmount", "#PlantOutput"]
-let numValues = [money, vanilla, vanillaBeans, planted, productionRate*2]
-
+let numNames = ["#Money", "#Extract", "#Beans", "#PlantAmount", "#PlantOutput", "#BeanRate", '#RotRate']
+let numValues = [money, vanilla, vanillaBeans, planted, productionRate*2, 0, ((1-rotRate)*100)]
 let buyButtons = document.querySelectorAll(".buyStuff")
+let saleValue = 0.99
 
 dialogButton.addEventListener("click", () => dialogToggle())
 for (const button of buyButtons) {
@@ -92,18 +91,20 @@ function updateButtonsThatRequireExtract() {
 }
 
 function updateLoop(){
-    if(vanilla === .25 && vanillaBeans === 0 && planted === 0){
-        document.getElementById("Message").innerHTML="Wow, I can't believe you converted your first and only vanilla bean.<br>You found a way to lose the game!<br>👏👏👏👏👏👏👏👏👏👏"
+    if(vanilla <= .25 && vanillaBeans < 1 && planted === 0){
+        document.getElementById("Message").innerHTML="Wow, I can't believe you found a way to lose the game!<br>👏👏👏👏👏👏👏👏👏👏"
         dialogToggle()
         clearInterval(updateInterval)
     }
-    numValues = [money, vanilla, grow(), planted, productionRate*2]
+    numValues = [money, vanilla, grow(), planted, productionRate*2, 0, ((1-rotRate)*100)]
+    numValues[5] = numValues[4] * numValues[3]
+
     updateButtonsThatRequireBeans()      
     updateButtonsThatRequireExtract()
     for (let i = 0; i < numNames.length; i++) {
         let thing = numNames[i]
         let amount
-        if(numValues[i] < 1000){
+        if(numValues[i] < 1000000){
             amount = numValues[i].toFixed(2)
         }else{
             amount = numValues[i].toExponential()
@@ -113,9 +114,7 @@ function updateLoop(){
 }
 
 function plant(event){
-    if(document.getElementById("farm").hidden){
-        document.getElementById("farm").hidden = false
-    }
+    document.getElementById("farm").hidden = false
     let amount = 1;
     const target = event.target.id;
     switch (target){
@@ -161,7 +160,7 @@ function convert(event){
     vanillaBeans -= amount;
     document.getElementById("ConvertingT").hidden=false;
     conversionDelayContainer = setTimeout(()=>{vanilla += (amount * conversionRate); conversionDelayContainer = null;
-        document.getElementById("ConvertingT").hidden=true}, conversionDelayAmount * 1000);
+        document.getElementById("ConvertingT").hidden=true}, conversionDelayAmount * 1000 * (amount/2));
 }
 function sell(event){
     let amount = 1;
@@ -183,14 +182,16 @@ function sell(event){
     if(vanilla < amount){
         return
     }
-    document.getElementById("SellingT").hidden=false;
+    document.getElementById("Shop").hidden=false;
     vanilla -= amount;
-    //--------------------------------------
-    console.error("Todo: Implement Selling")
-    //--------------------------------------
+    money+= saleValue * amount;
 }
 
 function grow(){
+    planted*=rotRate
+    if(planted < 0.01){
+        planted = 0;
+    }
     vanillaBeans += planted * productionRate
     return vanillaBeans
 }

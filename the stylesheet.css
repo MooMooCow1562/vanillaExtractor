@@ -1,7 +1,7 @@
 .NumValues{
     text-shadow: gray 1px 1px;
 }
-.currency, #farm{
+.currency, #farm, #Shop{
     border-color: darkgreen;
     border-style: solid;
     border-width: 2px;
@@ -12,6 +12,14 @@
 #farm{
     border-color: darkgoldenrod!important;
     border-style: dashed!important;
+}
+#Shop{
+    border-color: darkblue!important;
+    border-style: dashed!important;
+    float: right;
+    width: 40ch;
+    min-height: fit-content;
+    height: 60ch;
 }
 .currency, .buyStuff{ margin-bottom: 1ch;}
 #dialog{
