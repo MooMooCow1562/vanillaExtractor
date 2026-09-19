@@ -15,6 +15,7 @@ let numValues = [money, vanilla, vanillaBeans, planted, productionRate * 2, 0, (
 let buyButtons = document.querySelectorAll(".buyStuff")
 let saleValue = 0.99
 
+//event listeners for buttons.
 document.querySelector("#close").addEventListener("click", () => dialogToggle())
 for (const button of buyButtons) {
     switch (button.id.at(0)) {
@@ -32,12 +33,15 @@ for (const button of buyButtons) {
             console.log(button)
     }
 }
+
+// implementation in progress
 document.querySelector("#increaseConvert")
 document.querySelector("#increaseSalePrice")
 document.querySelector("#increaseBeanRate")
 document.querySelector("#increaseConvertRate")
 document.querySelector("#decreaseDecay")
 
+// toggles the dialog!
 function dialogToggle() {
     if (dialog.open) {
         dialog.close()
@@ -46,6 +50,7 @@ function dialogToggle() {
     }
 }
 
+// check and handle disabling and enabling bean related buttons as needed
 function updateButtonsThatRequireBeans() {
     if (vanillaBeans >= 100) {
         document.getElementById("Convert100").hidden = false;
@@ -74,6 +79,7 @@ function updateButtonsThatRequireBeans() {
     }
 }
 
+//check and handle disabling and enabling buttons that require extract
 function updateButtonsThatRequireExtract() {
     if (vanilla >= 100) {
         document.getElementById("Sell100").hidden = false;
@@ -95,6 +101,7 @@ function updateButtonsThatRequireExtract() {
     }
 }
 
+//main game loop
 function updateLoop() {
     if (vanilla < 1 && vanillaBeans < 1 && planted === 0) {
         document.getElementById("Message").innerHTML = "Wow, I can't believe you found a way to lose the game!<br>👏👏👏👏👏👏👏👏👏👏"
@@ -118,8 +125,8 @@ function updateLoop() {
     }
 }
 
+//handle planting events
 function plant(event) {
-    document.getElementById("farm").hidden = false
     let amount = 1;
     const target = event.target.id;
     switch (target) {
@@ -143,6 +150,7 @@ function plant(event) {
     planted += amount;
 }
 
+//handle conversion events
 function convert(event) {
     let amount = 1;
     const target = event.target.id;
@@ -174,6 +182,7 @@ function convert(event) {
     }, conversionDelayAmount * 1000 * (amount / 2));
 }
 
+//handle sale events
 function sell(event) {
     let amount = 1;
     const target = event.target.id;
@@ -199,6 +208,7 @@ function sell(event) {
     money += saleValue * amount;
 }
 
+//handle growth/decay events.
 function grow() {
     vanillaBeans += planted * productionRate
     planted *= rotRate
