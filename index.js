@@ -200,11 +200,11 @@ function sell(event) {
 }
 
 function grow() {
+    vanillaBeans += planted * productionRate
     planted *= rotRate
     if (planted < 0.01) {
         planted = 0;
     }
-    vanillaBeans += planted * productionRate
     return vanillaBeans
 }
 
