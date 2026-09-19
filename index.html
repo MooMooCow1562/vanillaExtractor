@@ -97,16 +97,33 @@
         </details>
     </div>
 </div>
-<div hidden id="farm"><b class="boxTitle">The Farm</b>
+<div id="balcony" class="location"><b class="boxTitle">Your balcony</b>
     <br>
-    <span id="PlantAmount" class="NumValues">0</span> Vanilla Plants each producing
+	You currently live in an appartment, you currently have <span id="BalconyPotCount" class="NumValues">0</span> pots sitting on your balcony.<br>
+	You only have space for <span class="NumValues">5</span> pots on your balcony.
+</div>
+<div hidden id="greenhouse" class="location"><b class="boxTitle">The Greenhouse</b>
+	You currently have a total of <span id="GreenhousePotCount" class="NumValues">0</span> pots sitting inside the greenhouse.
+	<br>
+	The greenhouse has space for <span class="NumValues">25</span> pots.
+</div>
+<div hidden id="farm" class="location"><b class="boxTitle">The Farm</b>
+    <br>
+	You currently have <span id="AcreCount" class="NumValues">0</span> acres of farm land.
+	<br>
+	Each acre can currently accomodate <span id="AcreEfficiency" class="NumValues">100</span> plants.
+	Your farm's soil quality is currently <span class="NumValues">extremely poor</span>
+</div>
+<div id="plantStats"><b class="boxTitle">You have:</b>
+	<br>
+	<span id="PlantAmount" class="NumValues">0</span> Vanilla Plants each producing
     <span id="PlantOutput" class="NumValues">0</span>
     beans per second for a total of <span id="BeanRate" class="NumValues">0</span> bps
-    <br>
+	<br>
+    You can have a total of <span id="totalCount" class="NumValues">0</span> Vanilla plants at once.
+	<br>
     Vanilla Plants currently rot at a rate of <span id="RotRate" class="NumValues">0</span>% per tick (every half
     seconds)
-</div>
-
 </body>
 <script src="index.js"></script>
 </html>
